@@ -1,1 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para a minha melhor amiga</title>
 
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background: linear-gradient(180deg, #dff6ff, #ffffff);
+      color: #2b3a42;
+    }
+
+    .snow {
+      position: fixed;
+      top: -10px;
+      color: white;
+      font-size: 1rem;
+      pointer-events: none;
+      animation: fall linear forwards;
+      z-index: 999;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+
+    header {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+    }
+
+    .hero {
+      max-width: 850px;
+      background: rgba(255, 255, 255, 0.75);
+      padding: 45px;
+      border-radius: 30px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+      backdrop-filter: blur(8px);
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      color: #5b8fb9;
+    }
+
+    p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 15px 35px;
+      border-radius: 50px;
+      background: #8ecae6;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.08);
+      background: #5b8fb9;
+    }
+
+    section {
+      padding: 90px 10%;
+      text-align: center;
+      position: relative;
+    }
+
+    h2 {
+      font-size: 2.7rem;
+      margin-bottom: 25px;
+      color: #5b8fb9;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+    }
+
+    .bear {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .floating-bear {
+      position: absolute;
+      font-size: 3rem;
+      animation: float 3s ease-in-out infinite alternate;
+      opacity: 0.85;
+    }
+
+    .bear1 { top: 10%; left: 8%; }
+    .bear2 { top: 70%; right: 10%; }
+    .bear3 { bottom: 10%; left: 12%; }
+    .bear4 { top: 20%; right: 15%; }
+
+    @keyframes float {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(-18px);
+      }
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #cdefff;
+      color: #4a6572;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.4rem;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      .hero {
+        padding: 30px 20px;
+      }
+
+      .floating-bear {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="floating-bear bear1">🧸</div>
+    <div class="floating-bear bear2">🧸</div>
+
+    <div class="hero">
+      <div style="font-size: 4rem;">❄️🧸❄️</div>
+      <h1>Para a minha melhor amiga</h1>
+      <p>
+        Já passaram três anos desde que nos conhecemos. Segundo ela, foi no Gengibre.
+        Para mim, foi numa aula aleatória onde eu entrei sem ser sequer a minha aula.
+      </p>
+      <p>
+        O importante é que, de uma forma ou de outra, a vida decidiu cruzar os nossos caminhos.
+        E ainda bem que decidiu.
+      </p>
+      <a href="#mensagem" class="btn">Ler mensagem ❄️</a>
+    </div>
+  </header>
+
+  <section id="mensagem">
+    <div class="floating-bear bear3">🧸</div>
+
+    <h2>Uma amizade que ficou</h2>
+    <p>
+      Em três anos, passámos por conversas, momentos parvos, fases boas,
+      fases menos boas e memórias que hoje fazem parte da nossa história.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="bear">🧸</div>
+        <h3>O início</h3>
+        <p>
+          Ela diz que foi no Gengibre. Eu digo que foi naquela aula aleatória.
+          A verdade é que os dois momentos já fazem parte da lenda.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="bear">❄️</div>
+        <h3>Os momentos</h3>
+        <p>
+          Nem tudo precisa de ser perfeito para ser especial.
+          Às vezes, são os momentos simples que ficam mais guardados.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="bear">🧸</div>
+        <h3>A amizade</h3>
+        <p>
+          Ter uma melhor amiga é ter alguém que fica,
+          mesmo quando a vida muda, mesmo quando os dias são estranhos.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="floating-bear bear4">🧸</div>
+
+    <h2>Obrigado por estes três anos</h2>
+    <p>
+      Obrigado por seres parte da minha vida, pelas memórias,
+      pela paciência, pelas conversas e por todos os momentos que só nós entendemos.
+    </p>
+    <p>
+      Este site é só uma forma diferente de dizer que a tua amizade é importante para mim.
+    </p>
+
+    <div style="font-size: 5rem; margin-top: 30px;">🧸❄️🧸</div>
+  </section>
+
+  <footer>
+    Feito com neve, ursinhos e amizade ❄️🧸
+  </footer>
+
+  <script>
+    let snowInterval;
+    let inactivityTimer;
+
+    function createSnowflake() {
+      const snowflake = document.createElement("div");
+      snowflake.classList.add("snow");
+      snowflake.textContent = "❄";
+
+      snowflake.style.left = Math.random() * window.innerWidth + "px";
+      snowflake.style.fontSize = Math.random() * 12 + 10 + "px";
+      snowflake.style.animationDuration = Math.random() * 3 + 3 + "s";
+
+      document.body.appendChild(snowflake);
+
+      setTimeout(() => {
+        snowflake.remove();
+      }, 6000);
+    }
+
+    function startSnow() {
+      clearInterval(snowInterval);
+      snowInterval = setInterval(createSnowflake, 120);
+
+      setTimeout(() => {
+        clearInterval(snowInterval);
+      }, 8000);
+    }
+
+    function resetInactivityTimer() {
+      clearTimeout(inactivityTimer);
+
+      inactivityTimer = setTimeout(() => {
+        startSnow();
+      }, 60000);
+    }
+
+    window.addEventListener("load", () => {
+      startSnow();
+      resetInactivityTimer();
+    });
+
+    ["mousemove", "keydown", "click", "scroll", "touchstart"].forEach(event => {
+      window.addEventListener(event, resetInactivityTimer);
+    });
+  </script>
+
+</body>
+</html>
