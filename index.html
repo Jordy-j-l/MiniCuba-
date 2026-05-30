@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Para a minha melhor amiga</title>
 
   <style>
@@ -11,6 +13,10 @@
       padding: 0;
       box-sizing: border-box;
       font-family: Arial, Helvetica, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -22,17 +28,18 @@
 
     .snow {
       position: fixed;
-      top: -10px;
+      top: -20px;
       color: white;
       font-size: 1rem;
       pointer-events: none;
       animation: fall linear forwards;
       z-index: 999;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
     }
 
     @keyframes fall {
       to {
-        transform: translateY(110vh);
+        transform: translateY(110vh) rotate(360deg);
         opacity: 0;
       }
     }
@@ -45,39 +52,67 @@
       text-align: center;
       padding: 40px 20px;
       position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top, rgba(255, 255, 255, 0.9), transparent 35%),
+        linear-gradient(180deg, #cdefff, #ffffff);
     }
 
     .hero {
-      max-width: 850px;
-      background: rgba(255, 255, 255, 0.75);
-      padding: 45px;
-      border-radius: 30px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.12);
-      backdrop-filter: blur(8px);
+      max-width: 900px;
+      background: rgba(255, 255, 255, 0.78);
+      padding: 50px;
+      border-radius: 35px;
+      box-shadow: 0 25px 70px rgba(91, 143, 185, 0.25);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-icon {
+      font-size: 4.8rem;
+      margin-bottom: 20px;
+      animation: softFloat 3s ease-in-out infinite alternate;
     }
 
     h1 {
-      font-size: 3.5rem;
-      margin-bottom: 20px;
-      color: #5b8fb9;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      margin-bottom: 22px;
+      color: #4d8fba;
+      line-height: 1.1;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 25px;
+      color: #4d8fba;
+    }
+
+    h3 {
+      color: #4d8fba;
+      margin-bottom: 15px;
+      font-size: 1.35rem;
     }
 
     p {
-      font-size: 1.15rem;
-      line-height: 1.8;
+      font-size: 1.12rem;
+      line-height: 1.85;
       margin-bottom: 20px;
+      color: #344b57;
     }
 
     .btn {
       display: inline-block;
       margin-top: 20px;
-      padding: 15px 35px;
+      padding: 15px 36px;
       border-radius: 50px;
       background: #8ecae6;
       color: white;
       text-decoration: none;
       font-weight: bold;
       transition: 0.3s;
+      box-shadow: 0 12px 30px rgba(91, 143, 185, 0.3);
     }
 
     .btn:hover {
@@ -89,81 +124,437 @@
       padding: 90px 10%;
       text-align: center;
       position: relative;
+      overflow: hidden;
     }
 
-    h2 {
-      font-size: 2.7rem;
-      margin-bottom: 25px;
-      color: #5b8fb9;
+    .section-light {
+      background: linear-gradient(180deg, #ffffff, #eefaff);
+    }
+
+    .section-blue {
+      background: linear-gradient(180deg, #eefaff, #ffffff);
     }
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 25px;
-      margin-top: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+      margin-top: 45px;
     }
 
     .card {
-      background: white;
-      padding: 30px;
-      border-radius: 25px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      background: rgba(255, 255, 255, 0.88);
+      padding: 34px 28px;
+      border-radius: 28px;
+      box-shadow: 0 15px 40px rgba(91, 143, 185, 0.18);
+      border: 1px solid rgba(142, 202, 230, 0.35);
       transition: 0.3s;
     }
 
     .card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-10px);
+      box-shadow: 0 22px 55px rgba(91, 143, 185, 0.28);
     }
 
     .bear {
-      font-size: 3rem;
+      font-size: 3.3rem;
       margin-bottom: 15px;
     }
 
     .floating-bear {
       position: absolute;
-      font-size: 3rem;
-      animation: float 3s ease-in-out infinite alternate;
+      font-size: 3.2rem;
+      animation: softFloat 3s ease-in-out infinite alternate;
       opacity: 0.85;
+      z-index: 1;
+      pointer-events: none;
     }
 
-    .bear1 { top: 10%; left: 8%; }
-    .bear2 { top: 70%; right: 10%; }
-    .bear3 { bottom: 10%; left: 12%; }
-    .bear4 { top: 20%; right: 15%; }
+    .bear1 {
+      top: 12%;
+      left: 8%;
+    }
 
-    @keyframes float {
+    .bear2 {
+      bottom: 12%;
+      right: 10%;
+      animation-delay: 0.7s;
+    }
+
+    .bear3 {
+      bottom: 10%;
+      left: 9%;
+      animation-delay: 0.4s;
+    }
+
+    .bear4 {
+      top: 20%;
+      right: 12%;
+      animation-delay: 0.9s;
+    }
+
+    @keyframes softFloat {
       from {
         transform: translateY(0);
       }
+
       to {
         transform: translateY(-18px);
       }
     }
 
-    footer {
-      text-align: center;
-      padding: 30px;
-      background: #cdefff;
-      color: #4a6572;
+    .final-message {
+      max-width: 850px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.75);
+      padding: 45px;
+      border-radius: 30px;
+      box-shadow: 0 18px 50px rgba(91, 143, 185, 0.18);
+      border: 1px solid rgba(142, 202, 230, 0.3);
     }
 
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2.4rem;
+    .big-icons {
+      font-size: 5rem;
+      margin-top: 30px;
+      animation: softFloat 2.8s ease-in-out infinite alternate;
+    }
+
+    .book-section {
+      padding: 100px 5%;
+      background:
+        radial-gradient(circle at top, rgba(255, 255, 255, 0.9), transparent 28%),
+        linear-gradient(180deg, #dff6ff, #ffffff);
+      text-align: center;
+    }
+
+    .book-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 28px;
+      margin-top: 45px;
+      perspective: 2200px;
+    }
+
+    .book-btn {
+      width: 62px;
+      height: 62px;
+      border: none;
+      border-radius: 50%;
+      background: #8ecae6;
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 12px 30px rgba(91, 143, 185, 0.3);
+      z-index: 20;
+    }
+
+    .book-btn:hover {
+      transform: scale(1.12);
+      background: #5b8fb9;
+    }
+
+    .book-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .book {
+      position: relative;
+      width: min(950px, 100%);
+      min-height: 560px;
+      display: flex;
+      padding: 28px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #83b8d8, #cdefff, #75aacc);
+      box-shadow:
+        0 35px 90px rgba(91, 143, 185, 0.35),
+        inset 0 0 35px rgba(255, 255, 255, 0.45);
+      transform-style: preserve-3d;
+    }
+
+    .book::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border-radius: 18px;
+      border: 3px solid rgba(255, 255, 255, 0.55);
+      pointer-events: none;
+    }
+
+    .book::after {
+      content: "";
+      position: absolute;
+      top: 28px;
+      bottom: 28px;
+      left: 50%;
+      width: 28px;
+      transform: translateX(-50%);
+      background: linear-gradient(
+        90deg,
+        rgba(91, 143, 185, 0.35),
+        rgba(255, 255, 255, 0.75),
+        rgba(91, 143, 185, 0.35)
+      );
+      border-radius: 50px;
+      z-index: 8;
+      box-shadow: 0 0 30px rgba(91, 143, 185, 0.35);
+    }
+
+    .book-page {
+      position: relative;
+      width: 50%;
+      min-height: 500px;
+      padding: 32px;
+      background:
+        linear-gradient(90deg, rgba(91, 143, 185, 0.08), transparent 14%),
+        #fffdf7;
+      box-shadow:
+        inset 0 0 30px rgba(91, 143, 185, 0.14),
+        0 10px 25px rgba(91, 143, 185, 0.15);
+      overflow: hidden;
+    }
+
+    .book-page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(120deg, rgba(255, 255, 255, 0.65), transparent 42%),
+        repeating-linear-gradient(
+          0deg,
+          rgba(91, 143, 185, 0.035),
+          rgba(91, 143, 185, 0.035) 1px,
+          transparent 1px,
+          transparent 8px
+        );
+      pointer-events: none;
+    }
+
+    .left-page {
+      border-radius: 16px 4px 4px 16px;
+      margin-right: 9px;
+    }
+
+    .right-page {
+      border-radius: 4px 16px 16px 4px;
+      margin-left: 9px;
+    }
+
+    .photo-grid {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+      align-content: center;
+    }
+
+    .photo-card {
+      background: white;
+      padding: 10px 10px 26px;
+      border-radius: 8px;
+      box-shadow: 0 12px 25px rgba(91, 143, 185, 0.25);
+      transform: rotate(-1.5deg);
+      transition: 0.3s;
+    }
+
+    .photo-card:nth-child(even) {
+      transform: rotate(1.5deg);
+    }
+
+    .photo-card:hover {
+      transform: rotate(0deg) scale(1.04);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+    }
+
+    .turning-sheet {
+      position: absolute;
+      top: 28px;
+      bottom: 28px;
+      width: calc(50% - 37px);
+      background: #fffdf7;
+      z-index: 15;
+      transform-style: preserve-3d;
+      pointer-events: none;
+      opacity: 0;
+      box-shadow: 0 20px 45px rgba(91, 143, 185, 0.35);
+    }
+
+    .turning-sheet .sheet-face {
+      position: absolute;
+      inset: 0;
+      padding: 32px;
+      backface-visibility: hidden;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(91, 143, 185, 0.08), transparent 16%),
+        #fffdf7;
+    }
+
+    .turning-sheet .sheet-back {
+      transform: rotateY(180deg);
+      background:
+        linear-gradient(270deg, rgba(91, 143, 185, 0.1), transparent 16%),
+        #f2fbff;
+    }
+
+    .turning-sheet.next {
+      right: 28px;
+      transform-origin: left center;
+      border-radius: 4px 16px 16px 4px;
+      animation: turnNext 1.15s ease-in-out forwards;
+    }
+
+    .turning-sheet.prev {
+      left: 28px;
+      transform-origin: right center;
+      border-radius: 16px 4px 4px 16px;
+      animation: turnPrev 1.15s ease-in-out forwards;
+    }
+
+    .turning-sheet.next .sheet-face,
+    .turning-sheet.next .sheet-back {
+      border-radius: 4px 16px 16px 4px;
+    }
+
+    .turning-sheet.prev .sheet-face,
+    .turning-sheet.prev .sheet-back {
+      border-radius: 16px 4px 4px 16px;
+    }
+
+    @keyframes turnNext {
+      0% {
+        opacity: 1;
+        transform: rotateY(0deg) skewY(0deg);
       }
 
-      h2 {
-        font-size: 2rem;
+      35% {
+        transform: rotateY(-65deg) skewY(-2deg);
+        filter: brightness(0.98);
       }
 
-      .hero {
-        padding: 30px 20px;
+      70% {
+        transform: rotateY(-135deg) skewY(2deg);
+        filter: brightness(0.92);
+      }
+
+      100% {
+        opacity: 1;
+        transform: rotateY(-180deg) skewY(0deg);
+      }
+    }
+
+    @keyframes turnPrev {
+      0% {
+        opacity: 1;
+        transform: rotateY(0deg) skewY(0deg);
+      }
+
+      35% {
+        transform: rotateY(65deg) skewY(2deg);
+        filter: brightness(0.98);
+      }
+
+      70% {
+        transform: rotateY(135deg) skewY(-2deg);
+        filter: brightness(0.92);
+      }
+
+      100% {
+        opacity: 1;
+        transform: rotateY(180deg) skewY(0deg);
+      }
+    }
+
+    #pageNumber {
+      margin-top: 25px;
+      color: #4d8fba;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px 20px;
+      background: #cdefff;
+      color: #4a6572;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 950px) {
+      .book-wrapper {
+        flex-direction: column;
+      }
+
+      .book {
+        min-height: auto;
+      }
+
+      .photo-card img {
+        height: 150px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      header {
+        padding: 30px 16px;
+      }
+
+      .hero,
+      .final-message {
+        padding: 32px 22px;
+      }
+
+      section {
+        padding: 70px 7%;
       }
 
       .floating-bear {
-        font-size: 2rem;
+        font-size: 2.1rem;
+      }
+
+      .book {
+        flex-direction: column;
+        padding: 20px;
+      }
+
+      .book::after {
+        display: none;
+      }
+
+      .book-page {
+        width: 100%;
+        min-height: auto;
+        margin: 0;
+        border-radius: 16px;
+      }
+
+      .left-page {
+        margin-bottom: 18px;
+      }
+
+      .photo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-card img {
+        height: 240px;
+      }
+
+      .turning-sheet {
+        display: none;
       }
     }
   </style>
@@ -176,72 +567,138 @@
     <div class="floating-bear bear2">🧸</div>
 
     <div class="hero">
-      <div style="font-size: 4rem;">❄️🧸❄️</div>
-      <h1>Para a minha melhor amiga</h1>
+      <div class="hero-icon">❄️🧸❄️</div>
+
+      <h1>Para a minha melhor amiga / consciência</h1>
+
       <p>
-        Já passaram três anos desde que nos conhecemos. Segundo ela, foi no Gengibre.
-        Para mim, foi numa aula aleatória onde eu entrei sem ser sequer a minha aula.
+        Já passaram três anos desde que nos conhecemos. Segundo a tua versão, foi no Gengibre.
+        Para mim, foi numa aula aleatória do Miranda, onde eu entrei só porque sim,
+        mesmo sem ser a minha aula.
       </p>
+
       <p>
         O importante é que, de uma forma ou de outra, a vida decidiu cruzar os nossos caminhos.
-        E ainda bem que decidiu.
+        E ainda bem que decidiu. Hehehe! 🐻
       </p>
-      <a href="#mensagem" class="btn">Ler mensagem ❄️</a>
+
+      <a href="#mensagem" class="btn">❄️🐻❄️</a>
     </div>
   </header>
 
-  <section id="mensagem">
+  <section id="mensagem" class="section-light">
     <div class="floating-bear bear3">🧸</div>
 
     <h2>Uma amizade que ficou</h2>
+
     <p>
-      Em três anos, passámos por conversas, momentos parvos, fases boas,
-      fases menos boas e memórias que hoje fazem parte da nossa história.
+      Em três anos, passámos por muita coisa. Fomos caloiros juntos, fizemos trabalhos,
+      fofocámos, falámos bem de algumas pessoas e mal de outras, vivemos momentos estupidamente aleatórios,
+      fases boas, fases menos boas e memórias que hoje fazem parte da nossa história.
+      Até hoje quero entender como tudo começou realmente e porque confiámos um no outro tão naturalmente.
+      Acho que foi mais do tipo: sim, porque não, né?
     </p>
 
     <div class="cards">
       <div class="card">
         <div class="bear">🧸</div>
+
         <h3>O início</h3>
+
         <p>
-          Ela diz que foi no Gengibre. Eu digo que foi naquela aula aleatória.
-          A verdade é que os dois momentos já fazem parte da lenda.
+          Gengibre ou aula do Miranda? A dúvida que ficará para a eternidade, hehehe.
+          Mas o importante é que, no início, vou ser sincero: eu tinha muita vontade de falar contigo e desabafar.
+          Desde o dia em que te conheci e falei contigo pela primeira vez, senti que podia confiar em ti
+          e ter-te como uma ótima amiga. A prova disso foi aquele dia em que ficámos no Discord até não sei que horas,
+          a falar de coisas aleatórias. Se me perguntares hoje sobre o que falámos, a minha resposta vai ser: sim.
         </p>
       </div>
 
       <div class="card">
         <div class="bear">❄️</div>
+
         <h3>Os momentos</h3>
+
         <p>
           Nem tudo precisa de ser perfeito para ser especial.
-          Às vezes, são os momentos simples que ficam mais guardados.
+          Às vezes, são os momentos simples que ficam mais guardados:
+          aquele dia em que estavas à janela a ver cair uma porção pequenina de neve,
+          aquele dia em que ficámos à toa no Discord a falar,
+          as noites em que tentámos estudar, ou realmente estudámos,
+          e as dancinhas que fazemos do nada na catedral,
+          mesmo eu não tendo ritmo nenhum para isso. 🤣
         </p>
       </div>
 
       <div class="card">
         <div class="bear">🧸</div>
+
         <h3>A amizade</h3>
+
         <p>
-          Ter uma melhor amiga é ter alguém que fica,
-          mesmo quando a vida muda, mesmo quando os dias são estranhos.
+          Ter uma melhor amiga é ter alguém com quem posso contar e que posso perturbar sempre.
+          Mesmo quando a vida muda, mesmo quando os dias são estranhos,
+          mesmo quando etapas acabam e outras começam, sei que essa pessoa vai estar lá.
+          Mesmo que passemos meses sem falar, quando voltamos é como se o tempo não tivesse passado;
+          só temos mais histórias para contar.
         </p>
       </div>
     </div>
   </section>
 
-  <section>
+  <section class="section-blue">
     <div class="floating-bear bear4">🧸</div>
 
-    <h2>Obrigado por estes três anos</h2>
+    <div class="final-message">
+      <h2>Obrigado por estes três anos</h2>
+
+      <p>
+        Obrigado por seres parte da minha vida, pelas memórias,
+        pela paciência, pelas conversas e por todos os momentos que só nós entendemos.
+      </p>
+
+      <p>
+        Este site é só uma forma diferente de dizer que a tua amizade é importante para mim.
+      </p>
+
+      <div class="big-icons">🧸❄️🧸</div>
+    </div>
+  </section>
+
+  <section class="book-section">
+    <h2>Álbum de Memórias 🧸❄️</h2>
+
     <p>
-      Obrigado por seres parte da minha vida, pelas memórias,
-      pela paciência, pelas conversas e por todos os momentos que só nós entendemos.
-    </p>
-    <p>
-      Este site é só uma forma diferente de dizer que a tua amizade é importante para mim.
+      Um pequeno livro para guardar momentos que marcaram estes três anos.
     </p>
 
-    <div style="font-size: 5rem; margin-top: 30px;">🧸❄️🧸</div>
+    <div class="book-wrapper">
+      <button class="book-btn" id="prevBtn" onclick="prevPage()">⬅</button>
+
+      <div class="book" id="book">
+        <div class="book-page left-page">
+          <div id="leftPage" class="photo-grid"></div>
+        </div>
+
+        <div class="book-page right-page">
+          <div id="rightPage" class="photo-grid"></div>
+        </div>
+
+        <div class="turning-sheet" id="turningSheet">
+          <div class="sheet-face">
+            <div id="sheetFront" class="photo-grid"></div>
+          </div>
+
+          <div class="sheet-face sheet-back">
+            <div id="sheetBack" class="photo-grid"></div>
+          </div>
+        </div>
+      </div>
+
+      <button class="book-btn" id="nextBtn" onclick="nextPage()">➡</button>
+    </div>
+
+    <p id="pageNumber"></p>
   </section>
 
   <footer>
@@ -265,11 +722,12 @@
 
       setTimeout(() => {
         snowflake.remove();
-      }, 6000);
+      }, 6500);
     }
 
     function startSnow() {
       clearInterval(snowInterval);
+
       snowInterval = setInterval(createSnowflake, 120);
 
       setTimeout(() => {
@@ -295,5 +753,129 @@
     });
   </script>
 
+  <script>
+    const fotos = [
+      "img/foto1.jpg",
+      "img/foto2.jpg",
+      "img/foto3.jpg",
+      "img/foto4.jpg",
+      "img/foto5.jpg",
+      "img/foto6.jpg",
+      "img/foto7.jpg",
+      "img/foto8.jpg"
+    ];
+
+    let paginaAtual = 0;
+    const fotosPorPagina = 4;
+    let animando = false;
+
+    const leftPage = document.getElementById("leftPage");
+    const rightPage = document.getElementById("rightPage");
+    const sheet = document.getElementById("turningSheet");
+    const sheetFront = document.getElementById("sheetFront");
+    const sheetBack = document.getElementById("sheetBack");
+    const pageNumber = document.getElementById("pageNumber");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    function criarFoto(src) {
+      const card = document.createElement("div");
+      card.className = "photo-card";
+
+      const img = document.createElement("img");
+      img.src = src;
+      img.alt = "Memória";
+
+      card.appendChild(img);
+      return card;
+    }
+
+    function obterFotosDaPagina(pagina) {
+      const inicio = pagina * fotosPorPagina;
+      const fim = inicio + fotosPorPagina;
+
+      return fotos.slice(inicio, fim);
+    }
+
+    function preencherGrid(grid, listaFotos) {
+      grid.innerHTML = "";
+
+      listaFotos.forEach(foto => {
+        grid.appendChild(criarFoto(foto));
+      });
+    }
+
+    function renderizarPagina(pagina) {
+      const fotosPagina = obterFotosDaPagina(pagina);
+
+      preencherGrid(leftPage, fotosPagina.slice(0, 2));
+      preencherGrid(rightPage, fotosPagina.slice(2, 4));
+
+      atualizarControles();
+    }
+
+    function atualizarControles() {
+      const totalPaginas = Math.ceil(fotos.length / fotosPorPagina);
+
+      pageNumber.textContent = `Página ${paginaAtual + 1} de ${totalPaginas}`;
+
+      prevBtn.disabled = paginaAtual === 0 || animando;
+      nextBtn.disabled = paginaAtual === totalPaginas - 1 || animando;
+    }
+
+    function animarVirarPagina(novaPagina, direcao) {
+      if (animando) return;
+
+      animando = true;
+      atualizarControles();
+
+      const fotosAtuais = obterFotosDaPagina(paginaAtual);
+      const fotosNovas = obterFotosDaPagina(novaPagina);
+
+      sheet.className = "turning-sheet";
+      sheetFront.innerHTML = "";
+      sheetBack.innerHTML = "";
+
+      if (direcao === "next") {
+        preencherGrid(sheetFront, fotosAtuais.slice(2, 4));
+        preencherGrid(sheetBack, fotosNovas.slice(0, 2));
+        sheet.classList.add("next");
+      } else {
+        preencherGrid(sheetFront, fotosAtuais.slice(0, 2));
+        preencherGrid(sheetBack, fotosNovas.slice(2, 4));
+        sheet.classList.add("prev");
+      }
+
+      setTimeout(() => {
+        paginaAtual = novaPagina;
+        renderizarPagina(paginaAtual);
+
+        sheet.className = "turning-sheet";
+        sheetFront.innerHTML = "";
+        sheetBack.innerHTML = "";
+
+        animando = false;
+        atualizarControles();
+      }, 1150);
+    }
+
+    function nextPage() {
+      const totalPaginas = Math.ceil(fotos.length / fotosPorPagina);
+
+      if (paginaAtual < totalPaginas - 1) {
+        animarVirarPagina(paginaAtual + 1, "next");
+      }
+    }
+
+    function prevPage() {
+      if (paginaAtual > 0) {
+        animarVirarPagina(paginaAtual - 1, "prev");
+      }
+    }
+
+    renderizarPagina(paginaAtual);
+  </script>
+
 </body>
+
 </html>
